@@ -6,21 +6,21 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Clienti">
+<meta name="apple-mobile-web-app-title" content="MyClientBox">
 <meta name="theme-color" content="#f2f3f6">
-<title>Cartella Clienti</title>
+<title>MyClientBox</title>
 <link rel="apple-touch-icon" id="touchIcon">
 <link rel="icon" id="favIcon">
 <style>
 :root{
   --bg:#f2f3f6; --card:#ffffff; --ink:#15171c; --muted:#6b7180; --line:#e4e6eb;
-  --accent:#2f45c8; --accent-soft:#e8ebfb; --danger:#c8312f; --danger-soft:#fbeaea;
+  --accent:#c41e3a; --accent-soft:#fbe8eb; --danger:#a11a1a; --danger-soft:#f7e4e4;
   --ok:#1f8a4c; --radius:16px; --shadow:0 1px 2px rgba(0,0,0,.05),0 4px 14px rgba(0,0,0,.04);
   --sat:env(safe-area-inset-top,0px); --sab:env(safe-area-inset-bottom,0px);
 }
 @media (prefers-color-scheme:dark){
   :root{ --bg:#0f1115; --card:#1a1d24; --ink:#eef0f4; --muted:#9097a6; --line:#2a2e38;
-    --accent:#7b8cff; --accent-soft:#232945; --danger:#ff6b66; --danger-soft:#3a1f20; --shadow:none; }
+    --accent:#ff5a6e; --accent-soft:#3a1d23; --danger:#ff8a80; --danger-soft:#3a1f20; --shadow:none; }
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);
@@ -29,6 +29,11 @@ button,input,textarea,select{font:inherit;color:inherit}
 button{cursor:pointer;border:0;background:none;padding:0}
 .wrap{max-width:720px;margin:0 auto;padding:calc(var(--sat) + 12px) 16px calc(var(--sab) + 110px)}
 .top{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:44px}
+.brand{display:flex;align-items:center;gap:10px;margin:2px 0 6px}
+.brand .logo{width:40px;height:40px;flex:none;border-radius:11px;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.brand .bn{font-size:19px;font-weight:600;letter-spacing:-.01em;line-height:1.1}
+.brand .bn b{font-weight:800;color:var(--accent)}
+.brand .by{font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:2px}
 .top h1{font-size:32px;line-height:1.1;margin:6px 0 2px;letter-spacing:-.02em}
 .sub{color:var(--muted);font-size:14px}
 .icon-btn{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;color:var(--accent);font-size:22px}
@@ -49,11 +54,18 @@ button{cursor:pointer;border:0;background:none;padding:0}
 .row .t{flex:1;min-width:0}
 .row .n{font-weight:600;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .row .m{color:var(--muted);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cbtns{display:flex;gap:8px;flex:none}
+.cico{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#fff;text-decoration:none}
+.cico svg{width:21px;height:21px}
+.cico.call{background:#2e7d32}
+.cico.wa{background:#25d366}
+.cico:active{transform:scale(.92)}
+.row{cursor:pointer}
 .badge{flex:none;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:4px}
 .empty{text-align:center;color:var(--muted);padding:48px 16px}
 .empty b{display:block;color:var(--ink);font-size:18px;margin-bottom:6px}
 .fab{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--sab) + 18px);background:var(--accent);color:#fff;
-  font-weight:700;padding:15px 26px;border-radius:999px;box-shadow:0 8px 24px rgba(47,69,200,.35);display:flex;gap:8px;align-items:center;font-size:17px;z-index:5}
+  font-weight:700;padding:15px 26px;border-radius:999px;box-shadow:0 8px 24px rgba(196,30,58,.35);display:flex;gap:8px;align-items:center;font-size:17px;z-index:5}
 .fab:active{transform:translateX(-50%) scale(.97)}
 .note{background:var(--accent-soft);color:var(--ink);border-radius:12px;padding:12px 14px;font-size:14px;margin:6px 0 12px;display:flex;gap:10px;align-items:flex-start}
 .note.warn{background:var(--danger-soft)}
@@ -147,6 +159,109 @@ button{cursor:pointer;border:0;background:none;padding:0}
 .btn-row .btn{flex:1}
 .pc-hint{display:none}
 @media (pointer:fine){ .pc-hint{display:block} .wrap{max-width:900px} .grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))} .th{cursor:grab} }
+/* ===== Restyling ===== */
+body{-webkit-font-smoothing:antialiased}
+.apphead{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:4px}
+.apphead .brand{margin:0}
+.hbtns{display:flex;align-items:center;gap:4px}
+.apphead .brand .bn{font-size:18px}.apphead .brand .logo{width:38px;height:38px}
+.sdot{display:flex;align-items:center;gap:6px;height:34px;padding:0 12px;border-radius:999px;background:var(--card);box-shadow:var(--shadow);font-size:12.5px;font-weight:600;color:var(--muted);max-width:170px}
+.sdot span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sdot i{width:8px;height:8px;border-radius:50%;background:var(--muted);flex:none}
+.sdot.ok i{background:#2e9d58}.sdot.sync i{background:var(--accent);animation:pulse 1s infinite}.sdot.error i,.sdot.offline i{background:#e0314b}
+@media (max-width:340px){ .sdot span{display:none} .sdot{padding:0 11px} }
+.titlebar{display:flex;align-items:center;gap:10px;margin:22px 0 4px}
+.titlebar h1{font-size:30px;margin:0;letter-spacing:-.025em}
+.titlebar .count{background:var(--accent-soft);color:var(--accent);font-weight:700;font-size:14px;padding:3px 10px;border-radius:999px}
+.titlebar .seg{margin:0 0 0 auto}
+.search{margin:12px 0 14px}
+.search input{border:0;box-shadow:var(--shadow);background:var(--card)}
+.list{gap:10px}
+.letter{font-size:13px;font-weight:800;color:var(--accent);padding:10px 6px 0;letter-spacing:.05em}
+.row{padding:14px;gap:13px;border-radius:18px;transition:transform .12s}
+.row:active{transform:scale(.985);opacity:1}
+.row .n{font-size:17px}
+.row .m{margin-top:1px}
+.dimtxt{opacity:.7;font-style:italic}
+.chips{display:flex;gap:6px;margin-top:6px}
+.chip{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:var(--muted);background:var(--bg);padding:3px 8px;border-radius:8px}
+.chip svg{width:12px;height:12px}
+.chev{color:var(--muted);font-size:26px;padding:0 4px;opacity:.5}
+.row .cbtns{gap:6px}
+.row .cico{width:38px;height:38px}
+.empty{background:var(--card);border-radius:20px;box-shadow:var(--shadow);padding:36px 22px;margin-top:6px}
+.empty .eico{font-size:40px;margin-bottom:10px}
+.empty .eico.big .logo{width:72px;height:72px;border-radius:18px}
+.empty b{display:block}
+.empty .btn{width:auto;display:flex;margin:18px auto 0;padding:13px 22px}
+.toast{bottom:calc(var(--sab) + 108px)}
+/* scheda cliente */
+.navbar{position:sticky;top:0;z-index:6;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:calc(var(--sat) + 6px) 12px 6px;
+  background:color-mix(in srgb,var(--bg) 82%,transparent);-webkit-backdrop-filter:saturate(1.8) blur(16px);backdrop-filter:saturate(1.8) blur(16px);border-bottom:1px solid color-mix(in srgb,var(--line) 60%,transparent)}
+.navbar .nt{font-weight:650;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;text-align:center}
+.wrap.client{padding-top:10px;padding-bottom:calc(var(--sab) + 120px)}
+.hero{background:var(--card);border-radius:22px;box-shadow:var(--shadow);padding:22px 14px 14px;margin-bottom:14px}
+.hero h2{font-size:23px;margin:12px 0 2px}
+.actions{margin:16px 0 0;gap:6px}
+.act{background:none;box-shadow:none;color:var(--ink);font-weight:600;font-size:12px;padding:4px 0}
+.act .ai{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent)}
+.act .ai svg{width:21px;height:21px}
+.act .ai.call{background:#2e7d32;color:#fff}.act .ai.wa{background:#25d366;color:#fff}
+.act.off{opacity:.3}
+.card{border-radius:18px}
+.info .kv{align-items:center;gap:12px;padding:12px 14px}
+.info .ki{width:34px;height:34px;border-radius:10px;background:var(--bg);display:grid;place-items:center;color:var(--muted);flex:none;font-size:16px}
+.info .ki svg{width:17px;height:17px}
+.info .kt{flex:1;min-width:0}
+.info .k{width:auto;font-size:12px;padding:0}
+.info .v{font-size:16px}
+.info .v.dim{font-size:15px;opacity:.6}
+.sec-title{display:flex;align-items:baseline;justify-content:space-between;margin:22px 4px 8px}
+.sec-title h3{margin:0;font-size:20px;letter-spacing:-.01em}
+.sec-title span{color:var(--muted);font-size:13px;font-weight:600}
+.progress{height:6px;border-radius:99px;background:var(--line);overflow:hidden;margin:0 4px 14px}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,#e0314b,#ff7a59);border-radius:99px;transition:width .4s}
+.doc{margin-bottom:10px}
+.doc-h{display:flex;align-items:center;gap:12px;padding:12px 12px 12px 14px}
+.dic{position:relative;width:44px;height:44px;border-radius:13px;background:var(--bg);display:grid;place-items:center;font-size:22px;flex:none}
+.doc.ok .dic{background:var(--accent-soft)}
+.tick{position:absolute;right:-5px;bottom:-5px;width:19px;height:19px;border-radius:50%;background:#2e9d58;color:#fff;font-size:11px;font-weight:800;display:grid;place-items:center;border:2px solid var(--card)}
+.dt{flex:1;min-width:0}
+.dt .tt{font-weight:650;font-size:16px;line-height:1.25}
+.dt .ds{font-size:13px;color:var(--muted);margin-top:1px}
+.doc.ok .dt .ds{color:#2e9d58;font-weight:600}
+.addc{display:flex;align-items:center;gap:6px;background:var(--accent);color:#fff;font-weight:650;font-size:14px;padding:9px 13px;border-radius:12px;flex:none}
+.addc:active{transform:scale(.95)}
+.doc.ok .addc{background:var(--accent-soft);color:var(--accent)}
+.doc .grid{padding:0 14px 14px}
+.dock{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--sab) + 14px);z-index:5;display:flex;gap:4px;padding:6px;border-radius:22px;
+  background:color-mix(in srgb,var(--card) 88%,transparent);-webkit-backdrop-filter:saturate(1.8) blur(18px);backdrop-filter:saturate(1.8) blur(18px);box-shadow:0 10px 30px rgba(0,0,0,.18);width:min(92vw,420px)}
+.dock button{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 4px;border-radius:16px;font-size:12px;font-weight:650;color:var(--accent)}
+.dock button:first-child{background:var(--accent);color:#fff}
+.dock button:disabled{opacity:.35}
+.dock button:active{transform:scale(.96)}
+.sheet{border-radius:22px 22px 0 0}
+.f-group,.menu{border-radius:16px}
+/* fotocamera */
+.cam{position:fixed;inset:0;z-index:40;background:#000;color:#fff;display:flex;flex-direction:column}
+.cam-top{display:flex;align-items:center;justify-content:space-between;padding:calc(var(--sat) + 8px) 12px 8px}
+.cam-top button{color:#fff;font-weight:600;font-size:17px;padding:8px 6px}
+.cam-top .done{background:#c41e3a;border-radius:10px;padding:8px 14px}
+.cam-top .done:disabled{opacity:.35}
+.cam-top .ttl{font-size:14px;opacity:.85}
+.cam-stage{flex:1;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.cam-stage video{width:100%;height:100%;object-fit:contain;background:#000}
+.flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+.flash.on{animation:flash .25s}
+@keyframes flash{0%{opacity:.8}100%{opacity:0}}
+.cam-strip{display:flex;gap:8px;overflow-x:auto;padding:8px 12px;min-height:76px}
+.ct{position:relative;flex:none;width:56px;height:56px;border-radius:8px;overflow:hidden;border:2px solid rgba(255,255,255,.6)}
+.ct img{width:100%;height:100%;object-fit:cover}
+.ct button{position:absolute;top:0;right:0;width:22px;height:22px;background:rgba(0,0,0,.65);color:#fff;font-size:12px;border-bottom-left-radius:8px}
+.cam-bottom{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:6px 20px calc(var(--sab) + 18px)}
+.cam-bottom .cnt{font-size:15px;opacity:.85}
+.shutter{width:74px;height:74px;border-radius:50%;background:#fff;border:5px solid rgba(255,255,255,.35);background-clip:padding-box;box-shadow:0 0 0 3px #fff inset}
+.shutter:active{transform:scale(.92)}
 #printArea{display:none}
 @media print{
   @page{margin:8mm}
@@ -171,13 +286,13 @@ button{cursor:pointer;border:0;background:none;padding:0}
 "use strict";
 /* ---------- Config ---------- */
 const CATS = [
-  {id:'identita',  label:"Documento d'identità"},
-  {id:'patente',   label:'Patente'},
-  {id:'sanitaria', label:'Tessera sanitaria / C.F.'},
-  {id:'reddito',   label:'Busta paga / Reddito'},
-  {id:'libretto',  label:'Libretto auto in permuta'},
-  {id:'perizia',   label:'Foto perizia'},
-  {id:'altri',     label:'Altri documenti (104, ecc.)'},
+  {id:'identita', icon:'🪪',  label:"Documento d'identità",           short:'DocIdentita'},
+  {id:'sanitaria', icon:'💳', label:'Tessera sanitaria',              short:'TesseraSanitaria'},
+  {id:'reddito', icon:'💶',   label:'Reddito / visura ecc.',          short:'Reddito'},
+  {id:'libretto', icon:'🚗',  label:'Libretto permuta / rottamazione', short:'Libretto'},
+  {id:'parentela', icon:'👨‍👩‍👧', label:'Grado di parentela',             short:'Parentela'},
+  {id:'perizia', icon:'📸',   label:'Foto perizia',                   short:'Perizia'},
+  {id:'altri', icon:'📎',     label:'Altri doc (es. 104)',            short:'Altri'},
 ];
 const catLabel = id => (CATS.find(c=>c.id===id)||{label:'Altro'}).label;
 const catIndex = id => { const i = CATS.findIndex(c=>c.id===id); return i<0?99:i; };
@@ -194,8 +309,19 @@ const I = {
   share:'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="m16 6-4-4-4 4"/><path d="M12 2v13"/></svg>',
   down:'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>',
   trash:'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg>',
+  camera:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.6l1.4-2h7l1.4 2h1.6A2.5 2.5 0 0 1 21 8.5v9a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5z"/><circle cx="12" cy="13" r="3.6"/></svg>',
+  printer:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>',
   clip:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m21.4 11-9.2 9.2a6 6 0 0 1-8.5-8.5l9.2-9.2a4 4 0 0 1 5.7 5.7l-9.2 9.2a2 2 0 0 1-2.8-2.8l8.5-8.5"/></svg>',
 };
+
+const LOGO = `<svg class="logo" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="11" fill="#16171c"/><g fill="none" stroke="#e0314b" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M24 7.5 36.5 13.5V27.5L24 33.5 11.5 27.5V13.5z"/><path d="M11.5 13.5 24 19.5 36.5 13.5M24 19.5V33.5"/></g><text x="24" y="43" text-anchor="middle" font-family="-apple-system,Segoe UI,Arial,sans-serif" font-size="5.4" font-weight="600" fill="#fff" opacity=".78">by Orescha</text></svg>`;
+
+const WA_ICON = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2A9.8 9.8 0 0 0 3.6 17l-1.4 4.8 4.9-1.3A9.8 9.8 0 1 0 12 2.2zm0 17.8c-1.5 0-3-.4-4.2-1.2l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.7-1.8c-.2-.5-.4-.4-.5-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1.1 2.7.1.2 1.9 2.9 4.6 4 1.7.7 2.4.8 3.2.6.5-.1 1.4-.6 1.6-1.2.2-.6.2-1.1.1-1.2l-.4-.3z"/></svg>';
+const CALL_ICON = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>';
+function contactBtns(tel){
+  const t = String(tel||'').replace(/[^\d+]/g,'');
+  return `<div class="cbtns"><a class="cico call" href="tel:${t}" aria-label="Chiama">${CALL_ICON}</a><a class="cico wa" href="https://wa.me/${waNumber(tel)}" target="_blank" rel="noopener" aria-label="WhatsApp">${WA_ICON}</a></div>`;
+}
 
 /* ---------- Utils ---------- */
 const $ = s => document.querySelector(s);
@@ -206,7 +332,7 @@ const fullName = c => [c.nome, c.cognome].filter(Boolean).join(' ').trim() || 'S
 const fileBase = c => ([c.cognome, c.nome].filter(Boolean).join('_') || 'cliente').normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^A-Za-z0-9_-]+/g,'_');
 const initials = c => ((c.nome||'')[0]||'') + ((c.cognome||'')[0]||'') || '?';
 const hue = s => { let h=0; for (const ch of s) h = (h*31 + ch.charCodeAt(0)) % 360; return h; };
-const avStyle = c => `background:hsl(${hue(fullName(c))} 55% 48%)`;
+const avStyle = c => `background:linear-gradient(135deg,hsl(${hue(fullName(c))} 45% 52%),hsl(${(hue(fullName(c))+25)%360} 50% 40%))`;
 const address = c => { const l2 = [c.cap, c.citta, c.prov ? '('+c.prov+')' : ''].filter(Boolean).join(' '); return [c.via, l2].filter(Boolean).join(', '); };
 const waNumber = t => { let d = String(t||'').replace(/[^\d+]/g,''); if (d.startsWith('+')) d = d.slice(1); else if (d.startsWith('00')) d = d.slice(2); else if (/^3\d{8,9}$/.test(d)) d = '39'+d; return d; };
 const fmtDate = ts => new Date(ts).toLocaleDateString('it-IT',{day:'2-digit',month:'short',year:'numeric'});
@@ -299,7 +425,7 @@ async function processFile(file){
   return { data: await file.arrayBuffer(), thumb:null, type: file.type || 'application/octet-stream', ext: extOf(file) };
 }
 const blobOf = f => new Blob([f.data], {type:f.type});
-const fileNameOf = (c, f, n) => `${fileBase(c)}_${catLabel(f.cat).split(/[ /(]/)[0].replace(/[^A-Za-z]/g,'')}_${n}.${f.ext||'jpg'}`;
+const fileNameOf = (c, f, n) => `${fileBase(c)}_${(CATS.find(x=>x.id===f.cat)||{short:'Doc'}).short}_${n}.${f.ext||'jpg'}`;
 
 /* ---------- ZIP (senza compressione) ---------- */
 const CRC = (()=>{ const t=new Uint32Array(256); for(let n=0;n<256;n++){ let c=n; for(let k=0;k<8;k++) c = c&1 ? 0xEDB88320^(c>>>1) : c>>>1; t[n]=c>>>0; } return t; })();
@@ -366,7 +492,12 @@ const isPC = () => matchMedia('(pointer:fine)').matches && !('ontouchstart' in w
 /* ---------- Sincronizzazione (Supabase) ---------- */
 const SYNC = { cfg: (()=>{ try{ return JSON.parse(ls.get('sbcfg')||'null'); }catch(e){ return null; } })(),
   sb:null, user:null, status:'off', msg:'', busy:false, last:0, soonT:null };
-function setStatus(st, msg=''){ SYNC.status=st; SYNC.msg=msg; const p=$('#syncPill'); if(p){ p.className='pill '+st; p.querySelector('span').textContent=statusText(); } }
+function setStatus(st, msg=''){ SYNC.status=st; SYNC.msg=msg; const p=$('#syncPill'); if(p){ p.className='sdot '+st; p.querySelector('span').textContent=statusShort(); } }
+function statusShort(){
+  if (!SYNC.cfg) return 'Solo qui';
+  if (!SYNC.user) return 'Accedi';
+  return ({sync:'Sincronizzo', ok:'Online', offline:'Offline', error:'Errore'})[SYNC.status] || 'Online';
+}
 function statusText(){
   if (!SYNC.cfg) return 'Solo su questo dispositivo';
   if (!SYNC.user) return 'Accesso richiesto';
@@ -493,7 +624,7 @@ function openSyncSheet(){
       e.preventDefault(); const d = Object.fromEntries(new FormData(form).entries());
       busy(true,'Accesso in corso…');
       try{
-        SYNC.cfg = { url:d.url.trim().replace(/\/+$/,''), key:d.key.trim() }; ls.set('sbcfg', JSON.stringify(SYNC.cfg));
+        SYNC.cfg = { url:d.url.trim().replace(/\/rest\/v1\/?$/,'').replace(/\/+$/,''), key:d.key.trim() }; ls.set('sbcfg', JSON.stringify(SYNC.cfg));
         await sbInit();
         const r = await SYNC.sb.auth.signInWithPassword({ email:d.email.trim(), password:d.password });
         if (r.error) throw r.error;
@@ -521,32 +652,50 @@ let pendingCat = null;
 async function render(){ freeUrls(); if (state.view==='client') await renderClient(); else await renderList(); }
 
 async function renderList(){
-  let cs = await store.allClients();
+  const all = await store.allClients();
+  let cs = all.slice();
   const q = state.q.trim().toLowerCase();
   if (q) cs = cs.filter(c => [c.nome,c.cognome,fullName(c),c.cognome+' '+c.nome,c.tel,c.email,c.citta,c.note].some(v => String(v||'').toLowerCase().includes(q)));
-  cs.sort(state.sort==='az' ? (a,b)=>(a.cognome||a.nome||'').localeCompare(b.cognome||b.nome||'','it') : (a,b)=>b.updatedAt-a.updatedAt);
-  const total = (await store.allClients()).length;
+  const az = state.sort==='az';
+  const dispName = c => az && c.cognome ? c.cognome+' '+(c.nome||'') : fullName(c);
+  cs.sort(az ? (a,b)=>dispName(a).localeCompare(dispName(b),'it') : (a,b)=>b.updatedAt-a.updatedAt);
   const showInstall = !isStandalone() && !ls.get('hideInstall');
+  const syncCls = !SYNC.cfg ? 'local' : !SYNC.user ? 'error' : SYNC.status;
+  let lastLetter = '';
+  const rows = cs.map(c => {
+    let head = '';
+    if (az){ const L = (dispName(c)[0]||'#').toUpperCase(); if (L!==lastLetter){ lastLetter=L; head=`<div class="letter">${esc(L)}</div>`; } }
+    const sub = [c.tel, c.citta].filter(Boolean).join(' · ');
+    return head + `
+      <div class="row" role="button" tabindex="0" data-act="open" data-id="${c.id}">
+        <div class="av" style="${avStyle(c)}">${esc(initials(c).toUpperCase())}</div>
+        <div class="t"><div class="n">${esc(dispName(c))}</div>
+          <div class="m">${sub ? esc(sub) : '<span class="dimtxt">Nessun recapito</span>'}</div>
+          <div class="chips"><span class="chip">${I.clip} ${c.docs||0} ${c.docs===1?'documento':'documenti'}</span></div></div>
+        ${c.tel ? contactBtns(c.tel) : '<div class="chev">›</div>'}
+      </div>`;
+  }).join('');
   app.innerHTML = `
   <div class="wrap">
-    <div class="top"><button id="syncPill" class="pill ${SYNC.cfg&&SYNC.user?SYNC.status:''}" data-act="sync"><i></i><span>${esc(statusText())}</span></button><button class="icon-btn" data-act="menu" aria-label="Menu">${I.dots}</button></div>
-    <h1 class="top" style="display:block">Clienti</h1>
-    <div class="sub">${total} ${total===1?'cliente':'clienti'} in archivio</div>
+    <header class="apphead">
+      <div class="brand">${LOGO}<div><div class="bn">My<b>Client</b>Box</div><div class="by">by Orescha</div></div></div>
+      <div class="hbtns">
+        <button id="syncPill" class="sdot ${syncCls}" data-act="sync" aria-label="Sincronizzazione"><i></i><span>${esc(statusShort())}</span></button>
+        <button class="icon-btn" data-act="menu" aria-label="Menu">${I.dots}</button>
+      </div>
+    </header>
+    <div class="titlebar"><h1>Clienti</h1><span class="count">${all.length}</span>
+      <div class="seg"><button data-act="sort" data-v="recent" class="${!az?'on':''}">Recenti</button><button data-act="sort" data-v="az" class="${az?'on':''}">A–Z</button></div></div>
     ${!db ? `<div class="note warn">⚠️ <div>Questo browser non permette di salvare i dati: andranno persi alla chiusura. Apri l'app da Safari e aggiungila alla schermata Home.</div></div>` : ''}
-    ${showInstall && db ? `<div class="note">📲 <div>Per usarla come un'app: in Safari tocca <b>Condividi</b> → <b>Aggiungi alla schermata Home</b>. Così i dati restano salvati in modo sicuro.</div><button data-act="hideInstall" aria-label="Chiudi">✕</button></div>` : ''}
+    ${showInstall && db ? `<div class="note">📲 <div>Per usarla come un'app: in Safari tocca <b>Condividi</b> → <b>Aggiungi alla schermata Home</b>.</div><button data-act="hideInstall" aria-label="Chiudi">✕</button></div>` : ''}
     <div class="search">${I.search}<input id="q" type="search" placeholder="Cerca nome, telefono, città…" value="${esc(state.q)}" autocomplete="off"></div>
-    <div class="seg"><button data-act="sort" data-v="recent" class="${state.sort==='recent'?'on':''}">Recenti</button><button data-act="sort" data-v="az" class="${state.sort==='az'?'on':''}">A–Z</button></div>
     <div class="list">
-      ${cs.length ? cs.map(c=>`
-        <button class="row" data-act="open" data-id="${c.id}">
-          <div class="av" style="${avStyle(c)}">${esc(initials(c).toUpperCase())}</div>
-          <div class="t"><div class="n">${esc(state.sort==='az' && c.cognome ? c.cognome+' '+(c.nome||'') : fullName(c))}</div>
-          <div class="m">${esc([c.tel, c.citta].filter(Boolean).join(' · ') || 'Aggiornato il '+fmtDate(c.updatedAt))}</div></div>
-          <div class="badge">${I.clip}${c.docs||0}</div>
-        </button>`).join('') : `<div class="empty">${q ? '<b>Nessun risultato</b>Prova con un altro nome o numero.' : '<b>Nessun cliente</b>Tocca “Nuovo cliente” per creare la prima cartella.'}</div>`}
+      ${cs.length ? rows : q
+        ? `<div class="empty"><div class="eico">🔍</div><b>Nessun risultato</b>Prova con un altro nome o numero.</div>`
+        : `<div class="empty"><div class="eico big">${LOGO}</div><b>Il tuo archivio è vuoto</b>Crea la prima cartella cliente: nome, recapiti e foto dei documenti, tutto in un posto.<button class="btn primary" data-act="new" style="margin-top:18px">${I.plus} Crea il primo cliente</button></div>`}
     </div>
   </div>
-  <button class="fab" data-act="new">${I.plus} Nuovo cliente</button>`;
+  ${all.length ? `<button class="fab" data-act="new">${I.plus} Nuovo cliente</button>` : ''}`;
   const qi = $('#q');
   qi.addEventListener('input', e => { state.q = e.target.value; const pos=e.target.selectionStart; renderList().then(()=>{ const n=$('#q'); n.focus(); try{n.setSelectionRange(pos,pos)}catch(_){} }); });
 }
@@ -557,38 +706,68 @@ async function renderClient(){
   const fs = (await store.filesOf(c.id)).sort(sortFiles);
   const tel = (c.tel||'').replace(/[^\d+]/g,'');
   const addr = address(c);
-  const kv = (k,v) => `<div class="kv"><div class="k">${k}</div><div class="v ${v?'':'dim'}">${v?esc(v):'—'}</div></div>`;
+  const done = CATS.filter(cat => fs.some(f=>f.cat===cat.id)).length;
+  const row = (icon, k, v, extra='') => `<div class="kv"><div class="ki">${icon}</div><div class="kt"><div class="k">${k}</div><div class="v ${v?'':'dim'}">${v?esc(v):'Non inserito'}</div></div>${extra}</div>`;
   app.innerHTML = `
-  <div class="wrap">
-    <div class="top"><button class="link-btn" data-act="back">‹ Clienti</button><button class="link-btn" data-act="edit">Modifica</button></div>
-    <div class="hero"><div class="av big" style="${avStyle(c)}">${esc(initials(c).toUpperCase())}</div><h2>${esc(fullName(c))}</h2><div class="sub">Creato il ${fmtDate(c.createdAt)}</div></div>
-    <div class="actions">
-      <a class="act ${tel?'':'off'}" href="tel:${esc(tel)}">${I.phone}Chiama</a>
-      <a class="act ${tel?'':'off'}" href="https://wa.me/${esc(waNumber(c.tel))}" target="_blank" rel="noopener">${I.chat}WhatsApp</a>
-      <a class="act ${c.email?'':'off'}" href="mailto:${esc(c.email||'')}">${I.mail}Email</a>
-      <a class="act ${addr?'':'off'}" href="https://maps.apple.com/?q=${encodeURIComponent(addr)}" target="_blank" rel="noopener">${I.pin}Mappa</a>
+  <div class="navbar"><button class="link-btn" data-act="back">‹ Clienti</button><div class="nt">${esc(fullName(c))}</div>
+    <div class="hbtns"><button class="link-btn" data-act="edit">Modifica</button><button class="icon-btn" data-act="clientMenu" aria-label="Altro">${I.dots}</button></div></div>
+  <div class="wrap client">
+    <div class="hero">
+      <div class="av big" style="${avStyle(c)}">${esc(initials(c).toUpperCase())}</div>
+      <h2>${esc(fullName(c))}</h2>
+      <div class="sub">${esc(c.citta || 'Cliente dal ' + fmtDate(c.createdAt))}</div>
+      <div class="actions">
+        <a class="act ${tel?'':'off'}" href="tel:${esc(tel)}"><span class="ai call">${CALL_ICON}</span>Chiama</a>
+        <a class="act ${tel?'':'off'}" href="https://wa.me/${esc(waNumber(c.tel))}" target="_blank" rel="noopener"><span class="ai wa">${WA_ICON}</span>WhatsApp</a>
+        <a class="act ${c.email?'':'off'}" href="mailto:${esc(c.email||'')}"><span class="ai">${I.mail}</span>Email</a>
+        <a class="act ${addr?'':'off'}" href="https://maps.apple.com/?q=${encodeURIComponent(addr)}" target="_blank" rel="noopener"><span class="ai">${I.pin}</span>Mappa</a>
+      </div>
     </div>
-    <div class="card">
-      ${kv('Telefono', c.tel)}${kv('Email', c.email)}${kv('Indirizzo', addr)}${c.note?kv('Note', c.note):''}
+    <div class="card info">
+      ${row(I.phone, 'Telefono', c.tel, c.tel ? contactBtns(c.tel) : '')}
+      ${row(I.mail, 'Email', c.email)}
+      ${row(I.pin, 'Indirizzo', addr)}
+      ${c.note ? row('📝', 'Note', c.note) : ''}
     </div>
-    ${CATS.map(cat => { const list = fs.filter(f=>f.cat===cat.id); return `
-    <div class="card" data-drop="${cat.id}">
-      <div class="sec-h"><div class="tt">${esc(cat.label)}${list.length?`<span class="cnt">${list.length}</span>`:''}</div>
-        <button class="add" data-act="add" data-cat="${cat.id}">${I.plus} Aggiungi</button></div>
-      <div class="grid">${list.map((f,ix) => `<button class="th" data-act="view" data-id="${f.id}" draggable="true" data-dl="${esc(f.type)}:${esc(fileNameOf(c,f,ix+1))}:${track(URL.createObjectURL(blobOf(f)))}">${
+    <div class="sec-title"><h3>Documenti</h3><span>${done} di ${CATS.length} sezioni</span></div>
+    <div class="progress"><i style="width:${Math.round(done/CATS.length*100)}%"></i></div>
+    ${CATS.map(cat => { const list = fs.filter(f=>f.cat===cat.id); const ok = list.length>0; return `
+    <div class="card doc ${ok?'ok':''}" data-drop="${cat.id}">
+      <div class="doc-h">
+        <div class="dic">${cat.icon}${ok?'<span class="tick">✓</span>':''}</div>
+        <div class="dt"><div class="tt">${esc(cat.label)}</div><div class="ds">${ok ? list.length + (list.length===1?' file':' file') : 'Nessun documento'}</div></div>
+        <button class="addc" data-act="add" data-cat="${cat.id}" aria-label="Aggiungi a ${esc(cat.label)}">${I.camera}<span>Aggiungi</span></button>
+      </div>
+      ${ok ? `<div class="grid">${list.map((f,ix) => `<button class="th" data-act="view" data-id="${f.id}" draggable="true" data-dl="${esc(f.type)}:${esc(fileNameOf(c,f,ix+1))}:${track(URL.createObjectURL(blobOf(f)))}">${
         f.thumb ? `<img src="${track(URL.createObjectURL(new Blob([f.thumb],{type:'image/jpeg'})))}" alt="">`
         : (f.type||'').startsWith('image/') ? `<img src="${track(URL.createObjectURL(blobOf(f)))}" alt="">`
-        : `<span class="pdf">${esc((f.ext||'file').toUpperCase())}</span>`}</button>`).join('')}</div>
+        : `<span class="pdf">${esc((f.ext||'file').toUpperCase())}</span>`}</button>`).join('')}</div>` : ''}
     </div>`; }).join('')}
-    <p class="sub pc-hint" style="padding:0 4px;margin:0 0 10px">Su PC puoi trascinare i file dentro una sezione per aggiungerli, oppure trascinare una miniatura sul desktop per salvarla.</p>
-    <div class="bottom-actions">
-      <div class="btn-row"><button class="btn primary" data-act="print" ${fs.length?'':'disabled'}>🖨️ Stampa</button><button class="btn primary" data-act="dlSel" ${fs.length?'':'disabled'}>${I.down} ${isPC()?'Scarica':'Salva'}</button></div>
-      <button class="btn" data-act="shareAll" ${fs.length?'':'disabled'}>${I.share} Condividi documenti</button>
-      <button class="btn" data-act="zip">${I.down} Scarica cartella (ZIP)</button>
-      <button class="btn" data-act="copyInfo">Copia dati del cliente</button>
-      <button class="btn danger" data-act="delClient">${I.trash} Elimina cliente</button>
-    </div>
+    <p class="sub pc-hint" style="padding:0 4px;margin:4px 0 10px">Su PC puoi trascinare i file dentro una sezione per aggiungerli, oppure trascinare una miniatura sul desktop per salvarla.</p>
+  </div>
+  <div class="dock">
+    <button data-act="print" ${fs.length?'':'disabled'}>${I.printer}<span>Stampa</span></button>
+    <button data-act="dlSel" ${fs.length?'':'disabled'}>${I.down}<span>${isPC()?'Scarica':'Salva'}</span></button>
+    <button data-act="shareAll" ${fs.length?'':'disabled'}>${I.share}<span>Condividi</span></button>
   </div>`;
+}
+function openClientMenu(){
+  const o=document.createElement('div'); o.className='ov';
+  o.innerHTML=`<div class="sheet">
+    <div class="top"><b>Altre azioni</b><button class="link-btn" data-x>Chiudi</button></div>
+    <div class="menu">
+      <button data-m="edit">✏️<div>Modifica dati<small>Nome, recapiti, indirizzo e note.</small></div></button>
+      <button data-m="copyInfo">📋<div>Copia dati del cliente<small>Da incollare in un messaggio o in un portale.</small></div></button>
+      <button data-m="zip">🗂️<div>Scarica cartella (ZIP)<small>Tutti i documenti divisi per sezione.</small></div></button>
+    </div>
+    <div class="menu"><button data-m="delClient" style="color:var(--danger)">🗑️<div>Elimina cliente<small>Cancella il cliente e tutti i suoi documenti.</small></div></button></div>
+  </div>`;
+  o.addEventListener('click', e => {
+    if (e.target===o || e.target.closest('[data-x]')) return o.remove();
+    const m=e.target.closest('[data-m]'); if(!m) return; o.remove();
+    const fake=document.createElement('button'); fake.dataset.act=m.dataset.m; fake.style.display='none'; document.body.appendChild(fake); fake.click(); fake.remove();
+  });
+  document.body.appendChild(o);
 }
 
 /* ---------- Overlay ---------- */
@@ -605,7 +784,7 @@ function openEditor(c){
   const isNew = !c; c = c || {};
   const o=document.createElement('div'); o.className='ov';
   const f = (name,label,type='text',extra='') => `<label><span>${label}</span><input name="${name}" type="${type}" value="${esc(c[name]||'')}" ${extra}></label>`;
-  o.innerHTML = `<form class="sheet" autocomplete="off">
+  o.innerHTML = `<form class="sheet" autocomplete="off" novalidate>
     <div class="top"><button type="button" class="link-btn" data-x>Annulla</button><b>${isNew?'Nuovo cliente':'Modifica'}</b><button class="link-btn" type="submit">Salva</button></div>
     <div class="f-group">${f('nome','Nome','text','autocapitalize="words"')}${f('cognome','Cognome','text','autocapitalize="words"')}</div>
     <div class="f-group">${f('tel','Telefono','tel','inputmode="tel"')}${f('email','Email','email','inputmode="email" autocapitalize="off"')}</div>
@@ -621,7 +800,7 @@ function openEditor(c){
     const d = Object.fromEntries(new FormData(e.target).entries());
     for (const k in d) d[k] = d[k].trim();
     d.prov = (d.prov||'').toUpperCase();
-    if (!d.nome && !d.cognome){ toast('Inserisci almeno nome o cognome'); return; }
+    if (!Object.values(d).some(v=>v)){ toast('Scrivi almeno il nome'); return; }
     const now = Date.now();
     const rec = Object.assign({}, c, d, { id: c.id || uid(), createdAt: c.createdAt || now, updatedAt: now, docs: c.docs || 0 });
     try{ await saveClient(rec); }catch(err){ toast('Errore nel salvataggio'); return; }
@@ -784,6 +963,70 @@ async function doRestore(file){
   }catch(e){ busy(false); toast(e.message || 'Ripristino non riuscito', 4000); }
 }
 
+/* ---------- Aggiungi: fotocamera a raffica o file ---------- */
+function pickFiles(cat){ pendingCat=cat; const p=$('#picker'); p.value=''; p.click(); }
+function openAddSheet(cat){
+  const hasCam = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+  if (isPC() || !hasCam) return pickFiles(cat);
+  const o=document.createElement('div'); o.className='ov';
+  o.innerHTML=`<div class="sheet">
+    <div class="top"><b>${esc(catLabel(cat))}</b><button class="link-btn" data-x>Annulla</button></div>
+    <div class="menu">
+      <button data-a="cam">📷<div>Scatta foto<small>Fai tutte le foto che vuoi, poi salvi tutto insieme.</small></div></button>
+      <button data-a="file">🖼️<div>Scegli da Foto o File<small>Anche più foto o PDF alla volta.</small></div></button>
+    </div></div>`;
+  o.addEventListener('click', e => {
+    if (e.target===o || e.target.closest('[data-x]')) return o.remove();
+    const a=e.target.closest('[data-a]'); if(!a) return; o.remove();
+    if (a.dataset.a==='cam') openCamera(cat); else pickFiles(cat);
+  });
+  document.body.appendChild(o);
+}
+async function openCamera(cat){
+  let stream;
+  try{
+    stream = await navigator.mediaDevices.getUserMedia({ audio:false, video:{ facingMode:{ideal:'environment'}, width:{ideal:3840}, height:{ideal:2160} } });
+  }catch(e){ toast('Permesso fotocamera negato: uso la fotocamera del telefono', 3500); pickFiles(cat); return; }
+  const shots = []; const thumbUrls = [];
+  const v = document.createElement('div'); v.className='cam';
+  v.innerHTML = `
+    <div class="cam-top"><button data-c="cancel">Annulla</button><div class="ttl">${esc(catLabel(cat))}</div><button data-c="done" class="done" disabled>Salva</button></div>
+    <div class="cam-stage"><video playsinline muted autoplay></video><div class="flash"></div></div>
+    <div class="cam-strip"></div>
+    <div class="cam-bottom"><div class="cnt"></div><button class="shutter" data-c="shot" aria-label="Scatta"></button><div class="cnt-r"></div></div>`;
+  document.body.appendChild(v);
+  const video = v.querySelector('video'); video.srcObject = stream;
+  try{ await video.play(); }catch(e){}
+  const strip = v.querySelector('.cam-strip'), done = v.querySelector('[data-c=done]');
+  const refresh = () => {
+    done.disabled = !shots.length; done.textContent = shots.length ? `Salva (${shots.length})` : 'Salva';
+    v.querySelector('.cnt').textContent = shots.length ? shots.length + (shots.length===1?' foto':' foto') : '';
+    strip.innerHTML = shots.map((s,i)=>`<div class="ct"><img src="${thumbUrls[i]}" alt=""><button data-del="${i}" aria-label="Elimina">✕</button></div>`).join('');
+    strip.scrollLeft = strip.scrollWidth;
+  };
+  const stop = () => { stream.getTracks().forEach(t=>t.stop()); thumbUrls.forEach(u=>URL.revokeObjectURL(u)); v.remove(); };
+  refresh();
+  v.addEventListener('click', async e => {
+    const del = e.target.closest('[data-del]');
+    if (del){ const i=+del.dataset.del; URL.revokeObjectURL(thumbUrls[i]); shots.splice(i,1); thumbUrls.splice(i,1); refresh(); return; }
+    const b = e.target.closest('[data-c]'); if (!b) return;
+    if (b.dataset.c==='shot'){
+      if (!video.videoWidth) return;
+      const c=document.createElement('canvas'); c.width=video.videoWidth; c.height=video.videoHeight;
+      c.getContext('2d').drawImage(video,0,0);
+      const fl=v.querySelector('.flash'); fl.classList.remove('on'); void fl.offsetWidth; fl.classList.add('on');
+      if (navigator.vibrate) navigator.vibrate(20);
+      const blob = await new Promise(r=>c.toBlob(r,'image/jpeg',0.92)); if (!blob) return;
+      shots.push(new File([blob], `foto_${Date.now()}.jpg`, {type:'image/jpeg'})); thumbUrls.push(URL.createObjectURL(blob)); refresh();
+    }
+    if (b.dataset.c==='done'){ const files=shots.slice(); stop(); addFiles(files, cat); }
+    if (b.dataset.c==='cancel'){
+      if (shots.length && !(await confirmDlg('Scartare le foto?', `Hai scattato ${shots.length} foto non ancora salvate.`, 'Scarta'))) return;
+      stop();
+    }
+  });
+}
+
 /* ---------- Stampa / scarica più documenti ---------- */
 async function openPickSheet(mode){
   const c = await store.getClient(state.cid); const fs = await store.filesOf(c.id);
@@ -854,6 +1097,7 @@ window.addEventListener('dragover', e => { if (e.dataTransfer && [...e.dataTrans
 window.addEventListener('drop', e => { if (!(e.target.closest && e.target.closest('[data-drop]'))) e.preventDefault(); });
 
 document.addEventListener('click', async e => {
+  if (e.target.closest('.cico')) return;
   const b = e.target.closest('[data-act]'); if (!b || b.closest('.viewer')) return;
   switch (b.dataset.act){
     case 'new': openEditor(null); break;
@@ -863,12 +1107,13 @@ document.addEventListener('click', async e => {
     case 'menu': openMenu(); break;
     case 'sort': state.sort=b.dataset.v; ls.set('sort',state.sort); render(); break;
     case 'hideInstall': ls.set('hideInstall','1'); render(); break;
-    case 'add': pendingCat=b.dataset.cat; const p=$('#picker'); p.value=''; p.click(); break;
+    case 'add': openAddSheet(b.dataset.cat); break;
     case 'view': openViewer(b.dataset.id); break;
     case 'shareAll': shareAll(); break;
     case 'print': openPickSheet('print'); break;
     case 'dlSel': openPickSheet('dl'); break;
     case 'sync': openSyncSheet(); break;
+    case 'clientMenu': openClientMenu(); break;
     case 'zip': doZip(); break;
     case 'copyInfo': {
       const c = await store.getClient(state.cid);
@@ -887,11 +1132,12 @@ $('#restorePicker').addEventListener('change', e => { const f=e.target.files[0];
 /* ---------- Icona per la schermata Home ---------- */
 function makeIcon(){
   try{
-    const s=180, c=document.createElement('canvas'); c.width=c.height=s; const x=c.getContext('2d');
-    const g=x.createLinearGradient(0,0,s,s); g.addColorStop(0,'#3a52e0'); g.addColorStop(1,'#1f2f99'); x.fillStyle=g; x.fillRect(0,0,s,s);
-    x.fillStyle='rgba(255,255,255,.55)'; x.beginPath(); x.roundRect(38,52,104,80,10); x.fill();
-    x.fillStyle='#fff'; x.beginPath(); x.moveTo(36,66); x.lineTo(74,66); x.lineTo(84,78); x.lineTo(144,78); x.quadraticCurveTo(150,78,150,84); x.lineTo(146,132); x.quadraticCurveTo(145,138,139,138); x.lineTo(41,138); x.quadraticCurveTo(35,138,34,132); x.lineTo(30,72); x.quadraticCurveTo(30,66,36,66); x.closePath(); x.fill();
-    x.fillStyle='#2f45c8'; x.beginPath(); x.arc(90,100,11,0,Math.PI*2); x.fill(); x.beginPath(); x.ellipse(90,128,20,11,0,Math.PI,0); x.fill();
+    const S=180, c=document.createElement('canvas'); c.width=c.height=S; const x=c.getContext('2d');
+    x.fillStyle='#16171c'; x.fillRect(0,0,S,S);
+    x.strokeStyle='#e0314b'; x.lineWidth=7; x.lineJoin='round'; x.lineCap='round';
+    x.beginPath(); x.moveTo(90,30); x.lineTo(136,52); x.lineTo(136,104); x.lineTo(90,126); x.lineTo(44,104); x.lineTo(44,52); x.closePath(); x.stroke();
+    x.beginPath(); x.moveTo(44,52); x.lineTo(90,74); x.lineTo(136,52); x.moveTo(90,74); x.lineTo(90,126); x.stroke();
+    x.fillStyle='rgba(255,255,255,.78)'; x.font='600 15px -apple-system,"Segoe UI",Arial,sans-serif'; x.textAlign='center'; x.fillText('by Orescha', 90, 158);
     const u=c.toDataURL('image/png'); $('#touchIcon').href=u; $('#favIcon').href=u;
   }catch(e){}
 }
@@ -901,6 +1147,7 @@ function makeIcon(){
   makeIcon();
   await openDB();
   try{ if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); }catch(e){}
+  try{ for (const f of await store.allFiles()) if (!CATS.some(c=>c.id===f.cat)){ f.cat='altri'; await saveFile(f); } }catch(e){}
   await render();
   if (SYNC.cfg){
     try{ await sbInit(); }catch(e){ setStatus('error', e.message); }
